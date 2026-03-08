@@ -14,6 +14,7 @@
     heroic
     vscode
     vesktop
+    chromium
   ];
   
   programs.helix = {

@@ -32,6 +32,10 @@
     options = [ "defaults" "nofail"];
   };
 
+  systemd.tmpfiles.rules = [
+    "d /mnt/drive2 077 root root -"
+  ];
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -68,6 +72,11 @@
     layout = "us";
     variant = "colemak";
   };
+
+  services.udev.extraRules = ''
+    # Keychron V-series, Q-series, etc.
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", MODE="0666", TAG+="uaccess"
+  '';
 
   console.keyMap = "colemak";
   
@@ -132,7 +141,7 @@
     isNormalUser = true;
     description = "Theodore Raber";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "plugdev" "input" ];
   };
 
   # Allow unfree packages
