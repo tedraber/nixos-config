@@ -26,6 +26,17 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];  
 
+  fileSystems."/mnt/drive2" = {
+    device = "/dev/disk/by-uuid/c3ae2d91-fda5-4f65-afff-45f56a6f526c";
+    fsType = "ext4";
+    options = [ "defaults" "nofail"];
+  };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -86,6 +97,11 @@
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
+
+    shellAliases = {
+      nrs = "sudo nixos-rebuild switch --flake ~/nixos-config#nixos";
+      nrsu = "sudo nixos-rebuild switch --upgrade --flake ~/nixos-config#nixos";
+    };
     
     ohMyZsh = {
       enable = true;
@@ -107,7 +123,7 @@
     source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
     # 5. zsh-autocomplete
-    source ${pkgs.zsh-autocomplete}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+    # source ${pkgs.zsh-autocomplete}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
   ''; 
    };
   
@@ -137,6 +153,13 @@
    zsh-autosuggestions
    zsh-autocomplete
   ];
+
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
