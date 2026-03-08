@@ -85,8 +85,31 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    syntaxHighlighting.enable = true;
     
-  };
+    ohMyZsh = {
+      enable = true;
+      plugins = [ "git" "sudo"];
+      theme = "fwalch";
+    };
+
+   interactiveShellInit = ''
+    # 1. zsh-fzf-tab (Load this BEFORE autocomplete/autosuggestions usually)
+    source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.zsh
+
+    # 2. zsh-nix-shell
+    source ${pkgs.zsh-nix-shell}/share/zsh-nix-shell/nix-shell.plugin.zsh
+
+    # 3. zsh-fzf-history-search
+    source ${pkgs.zsh-fzf-history-search}/share/zsh-fzf-history-search/zsh-fzf-history-search.zsh
+
+    # 4. zsh-autosuggestions
+    source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+    # 5. zsh-autocomplete
+    source ${pkgs.zsh-autocomplete}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+  ''; 
+   };
   
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ted = {
@@ -94,14 +117,7 @@
     description = "Theodore Raber";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
   };
-
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -114,6 +130,12 @@
    helix
    zsh
    wget
+   oh-my-zsh
+   zsh-fzf-tab
+   zsh-nix-shell
+   zsh-fzf-history-search
+   zsh-autosuggestions
+   zsh-autocomplete
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

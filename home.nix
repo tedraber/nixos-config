@@ -8,6 +8,12 @@
 
   home.packages = with pkgs; [
     nur.repos.Ev357.helium
+    steam
+    prismlauncher
+    protonplus
+    heroic
+    vscode
+    vesktop
   ];
   
   programs.helix = {
