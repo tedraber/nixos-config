@@ -6,6 +6,17 @@
   home.username = "ted";
   home.homeDirectory = "/home/ted";
 
+  pkgs.helix = {
+    enable = true;
+    defaultEditor = true;
+    settings = {
+      theme = "solarized_dark";
+      editor = {
+        line-number = "relative";
+        lsp.display-messages = true;
+      };
+    };
+  };
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
