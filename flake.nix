@@ -25,7 +25,7 @@
       modules = [
         ./configuration.nix
         {
-          nixpkgs.overlays = [ nur.overlay ];
+          nixpkgs.overlays = [ nur.overlays.default ];
         }
         home-manager.nixosModules.home-manager
         {
