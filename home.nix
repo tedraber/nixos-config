@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -6,16 +6,20 @@
   home.username = "ted";
   home.homeDirectory = "/home/ted";
 
-    programs.helix = {
-      enable = true;
-      defaultEditor = true;
-      settings = {
-        theme = "solarized_dark";
-        editor = {
-          line-number = "relative";
-          lsp.display-messages = true;
-        };
+  home.packages = with pkgs; [
+    nur.repos.Ev357.helium
+  ]
+  
+  programs.helix = {
+    enable = true;
+    defaultEditor = true;
+    settings = {
+      theme = "solarized_dark";
+      editor = {
+        line-number = "relative";
+        lsp.display-messages = true;
       };
+    };
 
   };
   # This value determines the Home Manager release that your

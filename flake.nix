@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    mic92.url = "github:Mic92/nur-packages";
+    nur.url = "github:nix-community/NUR";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -12,7 +12,7 @@
     
   };
 
-  outputs = { self, nixpkgs, home-manager, mic92, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
   let
     system = "x86_64-linux";
   in {
@@ -24,9 +24,9 @@
 
       modules = [
         ./configuration.nix
+        nixpkgs.overlays = [ nur.overlay ];
 
         home-manager.nixosModules.home-manager
-
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;

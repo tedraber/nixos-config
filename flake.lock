@@ -1,26 +1,5 @@
 {
   "nodes": {
-    "flake-parts": {
-      "inputs": {
-        "nixpkgs-lib": [
-          "nur",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1733312601,
-        "narHash": "sha256-4pDvzqnegAfRkPwO3wmwBhVi/Sye1mzps0zHWYnP88c=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "205b12d8b7cd4802fbcb8e8ef6a0f1408781a4f9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -41,7 +20,41 @@
         "type": "github"
       }
     },
+    "mic92": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1771733817,
+        "narHash": "sha256-b6qZp8nwST7LcjCyl2VxTNy0qVqAYu3imx/V74Y/18o=",
+        "owner": "Mic92",
+        "repo": "nur-packages",
+        "rev": "43e824009d9d4adf48432f385e10b29a26b881f5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1771446417,
+        "narHash": "sha256-d8yLrRj+9FmBqgY0Kzge1tBI2cqeOEmljEdgaKRYYSw=",
+        "ref": "refs/heads/main",
+        "rev": "bcfaad3fa26a4071b6b4495392ce1dc8758c7174",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/Mic92/nixpkgs"
+      },
+      "original": {
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/Mic92/nixpkgs"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1772773019,
         "narHash": "sha256-E1bxHxNKfDoQUuvriG71+f+s/NT0qWkImXsYZNFFfCs=",
@@ -57,32 +70,11 @@
         "type": "github"
       }
     },
-    "nur": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1772935429,
-        "narHash": "sha256-caDbxG5GrhgTk8qWgTyEYJ0oVTqkaOEtlg7hyswSZWQ=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "2e4a8d3eb75a02e7404f99ce4794dbdbfd86e608",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "NUR",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
-        "nur": "nur"
+        "mic92": "mic92",
+        "nixpkgs": "nixpkgs_2"
       }
     }
   },
