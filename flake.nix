@@ -12,7 +12,7 @@
     
   };
 
-  outputs = { self, nixpkgs, home-manager, mic92, ... }:
+  outputs = { self, nixpkgs, home-manager, mic92, ... }@inputs:
   let
     system = "x86_64-linux";
   in {
@@ -25,9 +25,6 @@
       modules = [
         ./configuration.nix
 
-        {
-          nixpkgs.overlays = [ nur.overlays ];
-        }
         home-manager.nixosModules.home-manager
 
         {
