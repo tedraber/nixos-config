@@ -15,6 +15,7 @@
     vscode
     vesktop
     chromium
+    ghostty
   ];
   
   programs.helix = {
