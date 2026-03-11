@@ -1,6 +1,9 @@
 { config, inputs, pkgs, ... }:
 
 {
+  imports = [
+    ./hyprland.nix
+  ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "ted";
@@ -16,20 +19,31 @@
     vesktop
     chromium
     ghostty
+    kdePackages.qtdeclarative
+    nwg-displays
   ];
   
   programs.helix = {
     enable = true;
     defaultEditor = true;
     settings = {
-      theme = "solarized_dark";
+      theme = "nord-night";
       editor = {
         line-number = "relative";
         lsp.display-messages = true;
       };
     };
-
+    languages = {
+    language-server.qmlls = {
+      command = "qmlls";
+      args = ["-E"];
+    };
+    language = [{
+      name = "qml";
+      language-servers = [ "qmlls" ];
+    }];
   };
+ };
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards

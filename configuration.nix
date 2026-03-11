@@ -168,6 +168,8 @@
    samba
    dig
    quickshell
+   hyprland
+   rofi
   ];
 
 
