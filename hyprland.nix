@@ -1,17 +1,16 @@
-{config, pkgs, ...}
+{config, pkgs, ...}:
 
 {
   wayland.windowManager.hyprland = {
     enable = true;
 
-    source = [
-      "~/.config/hypr/monitors.conf"
-    ];
-
+    extraConfig = ''
+      source = ~/.config/hypr/monitors.conf
+    '';
+    
     settings = {
-      monitor = ",preferred,auto,1";
       
-      "mod" = "SUPER";
+      "$mod" = "SUPER";
 
       bind = [
         "$mod, RETURN, exec, ghostty"
