@@ -19,9 +19,17 @@
     vesktop
     chromium
     ghostty
+    deezer-enhanced
     kdePackages.qtdeclarative
-    nwg-displays
   ];
+
+  home.pointerCursor = {
+    name = "Bibata-Modern-Ice";
+    size = 18;
+    package = pkgs.bibata-cursors;
+    gtk.enable = true;
+    x11.enable = true;
+  };
   
   programs.helix = {
     enable = true;
