@@ -21,6 +21,8 @@
     ghostty
     deezer-enhanced
     kdePackages.qtdeclarative
+    pavucontrol
+    gemini-cli
   ];
 
   home.pointerCursor = {
@@ -39,6 +41,7 @@
       editor = {
         line-number = "relative";
         lsp.display-messages = true;
+        mouse = false;
       };
     };
     languages = {
@@ -49,7 +52,7 @@
     language = [{
       name = "qml";
       language-servers = [ "qmlls" ];
-    }];
+    }];  
   };
  };
   # This value determines the Home Manager release that your
