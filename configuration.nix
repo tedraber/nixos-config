@@ -167,6 +167,7 @@
    cifs-utils
    samba
    dig
+   quickshell
   ];
 
 
