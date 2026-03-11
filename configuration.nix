@@ -64,21 +64,19 @@
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "ted";
+  };
+  programs.hyprland.enable = true;
+  
 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "colemak";
   };
-
-  services.udev.extraRules = ''
-    # Keychron V-series, Q-series, etc.
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", MODE="0666", TAG+="uaccess"
-  '';
 
   console.keyMap = "colemak";
   
@@ -103,6 +101,7 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+  hardware.keyboard.qmk.keychronSupport = true;
 
   programs.zsh = {
     enable = true;
@@ -149,6 +148,18 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
+
+  environment.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
+  };
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

@@ -7,9 +7,12 @@
     extraConfig = ''
       source = ~/.config/hypr/monitors.conf
     '';
-    
+
     settings = {
-      
+      input = {
+        kb_layout="us";
+        kb_variant="colemak";
+      };
       "$mod" = "SUPER";
 
       bind = [
