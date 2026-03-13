@@ -11,9 +11,6 @@
     ];
 
   # Bootloader.
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.efi.canTouchEfiVariables = true;
-
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;
@@ -80,9 +77,17 @@
   services.displayManager.autoLogin = {
     enable = true;
     user = "ted";
+    Session = "mango";
   };
   programs.hyprland.enable = true;
+
+  programs.mango = {
+    enable = true;
+  };
   
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -123,6 +128,7 @@
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake ~/nixos-config#nixos";
       nrsu = "sudo nixos-rebuild switch --upgrade --flake ~/nixos-config#nixos";
+      quit = "exit";
     };
     
     ohMyZsh = {
@@ -202,6 +208,10 @@
    btop
    gotop
    wineWow64Packages.stable
+   wmenu
+   wl-clipboard
+   swaybg
+   waybar
   ];
 
 
