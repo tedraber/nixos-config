@@ -11,9 +11,19 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
+    grub = {
+      efiSupport = true;
+      device = "nodev";
+    };
+  };
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -42,6 +52,8 @@
     enable = true;
     enable32Bit = true;
   };
+
+  programs.nix-ld.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -134,6 +146,9 @@
 
     # 5. zsh-autocomplete
     # source ${pkgs.zsh-autocomplete}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+    export EDITOR="hx"
+    export VISUAL="hx"
   ''; 
    };
   
@@ -180,9 +195,13 @@
    cifs-utils
    samba
    dig
-   quickshell
    hyprland
+   yazi
    rofi
+   python3
+   btop
+   gotop
+   wineWow64Packages.stable
   ];
 
 

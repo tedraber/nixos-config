@@ -3,7 +3,11 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    xwayland.enable = true;  
     extraConfig = ''
+      xwayland {
+        force_zero_scaling = true
+      }
       source = ~/.config/hypr/monitors.conf
     '';
 
@@ -11,6 +15,7 @@
       input = {
         kb_layout="us";
         kb_variant="colemak";
+        kb_options= caps:escape;
       };
 
       general = {
@@ -40,6 +45,7 @@
         "$mod, Q, killactive"
         "$mod, SPACE, exec, rofi -show drun"
         "$mod, B, exec, helium"
+        "$mod, E, exec, nautilus --new-window"
 
         # Move focus/windows with keys
         "$mod, H, movefocus, l"

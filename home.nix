@@ -20,9 +20,12 @@
     chromium
     ghostty
     deezer-enhanced
-    kdePackages.qtdeclarative
     pavucontrol
-    gemini-cli
+    nautilus
+    chromium
+    xclicker
+    gpu-screen-recorder-gtk
+    kooha
   ];
 
   home.pointerCursor = {

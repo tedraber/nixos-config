@@ -9,7 +9,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
   };
 
   outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
@@ -18,23 +17,20 @@
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = {
-        inherit inputs;
-      };
-
+      specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
-        {
-          nixpkgs.overlays = [ nur.overlays.default ];
-        }
+
+        { nixpkgs.overlays = [ nur.overlays.default ]; }
+
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-
-          home-manager.users.ted = ./home.nix;
-
-          home-manager.extraSpecialArgs = { inherit (self) inputs; };
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.ted = ./home.nix;
+            extraSpecialArgs = { inherit inputs; };
+          };
         }
       ];
     };
