@@ -3,7 +3,6 @@
 {
   imports = [
     ./hyprland.nix
-    ./mango.nix
   ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -59,6 +58,16 @@
     }];  
   };
  };
+
+  programs.ghostty = {
+    enable = true;
+    enableZshIntegration = true;
+
+    settings = {
+      theme = "Nordfox";
+      custom-shader = "shaders/cursor_sweep.glsl";
+    };
+  };
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards

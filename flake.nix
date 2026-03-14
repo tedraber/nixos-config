@@ -10,13 +10,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    mango = {
-      url = "github:mangowm/mango";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, mango, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur,  ... }@inputs:
   let
     system = "x86_64-linux";
   in {
@@ -25,8 +21,6 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
-
-        mango.nixosModules.mango
 
         { nixpkgs.overlays = [ nur.overlays.default ]; }
 

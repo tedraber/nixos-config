@@ -77,17 +77,15 @@
   services.displayManager.autoLogin = {
     enable = true;
     user = "ted";
-    Session = "mango";
   };
   programs.hyprland.enable = true;
 
-  programs.mango = {
-    enable = true;
-  };
   
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
+
+  home-manager.backupFileExtension = "backup";
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -208,10 +206,8 @@
    btop
    gotop
    wineWow64Packages.stable
-   wmenu
-   wl-clipboard
-   swaybg
-   waybar
+   rustup
+   direnv
   ];
 
 

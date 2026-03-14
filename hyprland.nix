@@ -8,6 +8,7 @@
       xwayland {
         force_zero_scaling = true
       }
+      env = XCURSOR_SIZE,18
       source = ~/.config/hypr/monitors.conf
     '';
 
