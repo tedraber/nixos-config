@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -80,6 +80,7 @@
   };
   programs.hyprland.enable = true;
 
+  programs.gpu-screen-recorder.enable = true;
   
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -208,6 +209,7 @@
    wineWow64Packages.stable
    rustup
    direnv
+   inputs.ambxst.packages.${pkgs.system}.default
   ];
 
 

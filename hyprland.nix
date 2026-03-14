@@ -8,7 +8,6 @@
       xwayland {
         force_zero_scaling = true
       }
-      env = XCURSOR_SIZE,18
       source = ~/.config/hypr/monitors.conf
     '';
 
@@ -23,6 +22,16 @@
         layout = "dwindle";
       };
 
+      exec-once = [
+        "ambxst"
+      ];
+      
+      env = [
+        "XCURSOR_SIZE,24"
+        "HYPRCURSOR_SIZE,24"
+        "STEAM_FORCE_DESKTOPUI_SCALING,1"
+      ];
+      
       dwindle = {
         # Keeps the split direction based on the cursor position
         preserve_split = true; 
@@ -30,15 +39,6 @@
         force_split = 2;
       };
 
-      animations = {
-        enabled = true;
-        bezier = "overshot, 0.5, 0.9, 0.1, 1.1";
-        animation = [
-          "windows, 1, 5, overshot, slide"
-          "workspaces, 1, 5, default, slidefade 20%"
-        ];
-      };
-   
       "$mod" = "SUPER";
 
       bind = [

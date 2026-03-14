@@ -24,7 +24,7 @@
     nautilus
     chromium
     xclicker
-    gpu-screen-recorder-gtk
+    gpu-screen-recorder
     kooha
   ];
 
@@ -35,7 +35,6 @@
     gtk.enable = true;
     x11.enable = true;
   };
-  
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -67,6 +66,10 @@
       theme = "Nordfox";
       custom-shader = "shaders/cursor_sweep.glsl";
     };
+  };
+
+  xdg.configFile."ghostty/config" = {
+    force = true;  # HM will overwrite whatever's there on rebuild
   };
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
