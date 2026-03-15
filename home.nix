@@ -8,6 +8,7 @@
   # paths it should manage.
   home.username = "ted";
   home.homeDirectory = "/home/ted";
+  systemd.user.startServices = "sd-switch";
 
   home.packages = with pkgs; [
     nur.repos.Ev357.helium
@@ -30,6 +31,8 @@
     inputs.ambxst.packages.${pkgs.system}.default
     protontricks
     ddcui
+    nwg-look
+    nwg-displays
   ];
 
   home.sessionVariables = {

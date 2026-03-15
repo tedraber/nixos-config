@@ -14,13 +14,20 @@
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
+      efiSysMountPoint = "/boot";
     };
-    grub = {
-      efiSupport = true;
-      device = "nodev";
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 10;
     };
   };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -76,7 +83,7 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
-  services.displayManager.autoLogin.enable = false;
+  services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "ted";
   programs.hyprland.enable = true;
 
@@ -85,8 +92,6 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
-
-  home-manager.backupFileExtension = "backup";
 
   # Configure keymap in X11
   services.xserver.xkb = {
