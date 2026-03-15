@@ -21,13 +21,24 @@
     ghostty
     deezer-enhanced
     pavucontrol
-    nautilus
     chromium
     xclicker
     gpu-screen-recorder
     kooha
+    adwsteamgtk
+    kdePackages.dolphin
+    inputs.ambxst.packages.${pkgs.system}.default
+    protontricks
+    ddcui
   ];
 
+  home.sessionVariables = {
+    EDITOR = "hx";
+    VISUAL = "hx";
+    TERMINAL = "ghostty";
+    BROWSER = "helium";
+  };
+  
   home.pointerCursor = {
     name = "Bibata-Modern-Ice";
     size = 18;

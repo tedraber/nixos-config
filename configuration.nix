@@ -50,6 +50,8 @@
     enable32Bit = true;
   };
 
+  hardware.i2c.enable = true;
+
   programs.nix-ld.enable = true;
 
   # Set your time zone.
@@ -74,10 +76,8 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "ted";
-  };
+  services.displayManager.autoLogin.enable = false;
+  services.displayManager.autoLogin.user = "ted";
   programs.hyprland.enable = true;
 
   programs.gpu-screen-recorder.enable = true;
@@ -152,8 +152,6 @@
     # 5. zsh-autocomplete
     # source ${pkgs.zsh-autocomplete}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
-    export EDITOR="hx"
-    export VISUAL="hx"
   ''; 
    };
   
@@ -162,7 +160,7 @@
     isNormalUser = true;
     description = "Theodore Raber";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "plugdev" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "plugdev" "input" "i2c" ];
   };
 
   # Allow unfree packages

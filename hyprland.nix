@@ -12,6 +12,8 @@
     '';
 
     settings = {
+      exec-once = "ambxst";
+      
       input = {
         kb_layout="us";
         kb_variant="colemak";
@@ -22,10 +24,6 @@
         layout = "dwindle";
       };
 
-      exec-once = [
-        "bash -c ambxst"
-      ];
-      
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
@@ -43,7 +41,6 @@
 
       bind = [
         "$mod, Q, killactive"
-        "$mod, SPACE, exec, rofi -show drun"
         "$mod, B, exec, helium"
       ];
 
