@@ -46,6 +46,7 @@
       bind = [
         "$mod, Q, killactive" 
         "$mod, B, exec, helium" 
+        "$mod, E, exec, nautilus --new-window"
       ];
 
       bindm = [

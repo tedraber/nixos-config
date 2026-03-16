@@ -33,6 +33,9 @@
     ddcui
     nwg-look
     nwg-displays
+    nautilus
+    fzf
+    libreoffice
   ];
 
   home.sessionVariables = {
@@ -49,6 +52,7 @@
     gtk.enable = true;
     x11.enable = true;
   };
+
   programs.helix = {
     enable = true;
     defaultEditor = true;

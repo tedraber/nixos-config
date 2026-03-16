@@ -86,7 +86,7 @@
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "ted";
   programs.hyprland.enable = true;
-
+  
   programs.gpu-screen-recorder.enable = true;
   
   fonts.packages = with pkgs; [
@@ -124,7 +124,7 @@
   # services.xserver.libinput.enable = true;
   hardware.keyboard.qmk.keychronSupport = true;
 
-  programs.zsh = {
+  programs.zsh = { 
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
@@ -157,6 +157,11 @@
     # 5. zsh-autocomplete
     # source ${pkgs.zsh-autocomplete}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
+    export EDITOR=hx
+    export VISUAL=hx
+    export TERMINAL=ghostty
+    export BROWSER=helium
+ 
   ''; 
    };
   
@@ -213,6 +218,7 @@
    rustup
    direnv
    inputs.ambxst.packages.${pkgs.system}.default
+   gamescope
   ];
 
 
@@ -220,6 +226,7 @@
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    gamescopeSession.enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
