@@ -6,6 +6,10 @@
     xwayland.enable = true;
     systemd.enable = true; 
 
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.csgo-vulkan-fix
+    ];
+
     settings = {
       exec-once = [
         "dbus-update-activation-environment --systemd DISPLAY HYPRLAND_INSTANCE_SIGNATURE WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE"
@@ -15,6 +19,12 @@
       source = [
         "~/.config/hypr/monitors.conf"
       ];
+
+      plugin = {
+        csgo-vulkan-fix = {
+          fix_mouse = true;
+        };
+      };
       
       input = {
         kb_layout = "us";

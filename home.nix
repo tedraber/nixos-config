@@ -28,7 +28,7 @@
     kooha
     adwsteamgtk
     kdePackages.dolphin
-    inputs.ambxst.packages.${pkgs.system}.default
+    inputs.ambxst.packages.${pkgs.stdenv.hostPlatform.system}.default
     protontricks
     ddcui
     nwg-look
@@ -36,6 +36,15 @@
     nautilus
     fzf
     libreoffice
+    appimage-run
+    tor-browser
+    (makeDesktopItem {
+      name = "shadps4";
+      desktopName = "shadPS4 Emulator";
+      exec = "appimage-run /home/ted/Downloads/shadPS4QtLauncher-linux-qt-2026-03-15-d961f92/shadPS4QtLauncher-qt.AppImage";
+      icon = "shadps4";
+      comment = "PS4 Emulator";
+    })
   ];
 
   home.sessionVariables = {

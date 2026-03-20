@@ -28,6 +28,10 @@
     options = "--delete-older-than 7d";
   };
 
+  virtualisation.libvirtd.enable = true;
+  
+  programs.virt-manager.enable = true;
+  
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -132,6 +136,7 @@
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake ~/nixos-config#nixos";
       nrsu = "sudo nixos-rebuild switch --upgrade --flake ~/nixos-config#nixos";
+      shutdown = "sudo shutdown now";
       quit = "exit";
     };
     
@@ -170,7 +175,7 @@
     isNormalUser = true;
     description = "Theodore Raber";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "plugdev" "input" "i2c" ];
+    extraGroups = [ "networkmanager" "wheel" "plugdev" "input" "i2c" "tty" "libvirtd" "kvm" ];
   };
 
   # Allow unfree packages
@@ -217,8 +222,12 @@
    wineWow64Packages.stable
    rustup
    direnv
-   inputs.ambxst.packages.${pkgs.system}.default
+   inputs.ambxst.packages.${pkgs.stdenv.hostPlatform.system}.default
    gamescope
+   pince
+   qemu
+   virt-viewer
+   pciutils
   ];
 
 
